@@ -1,6 +1,6 @@
 import { app } from './main';
 
-import router from './infra/route';
+import router from './infra/routes';
 
 const port = process.env.PORT || 8080;
 
