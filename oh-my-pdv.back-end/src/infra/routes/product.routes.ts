@@ -21,4 +21,4 @@ router.delete('/:product_id', async (request, reply) => {
   await productController.remove(request, reply);
 });
 
-export { router as auth_router };
+export { router as product_router };
