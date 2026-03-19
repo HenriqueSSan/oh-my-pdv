@@ -9,15 +9,20 @@ export class SignInUsecase {
   constructor() {}
 
   async handle(request: Request, reply: Response) {
-    const signInDto = new SignInDto(request.body.email, request.body.password).valueOf();
+    const signInDto = new SignInDto(
+      request.body.email,
+      request.body.password,
+    ).valueOf();
 
     const user = new UserDomain().toEntity(
       await (async () => {
-        let alreadyExist = await prisma.user.findFirst({ where: { email: signInDto.email } });
+        let alreadyExist = await prisma.user.findFirst({
+          where: { email: signInDto.email },
+        });
 
         if (alreadyExist) return alreadyExist;
 
-        throw new Error('Credentials Invalid');
+        throw new Error('Invalid credentials');
       })(),
     );
 
@@ -39,6 +44,6 @@ export class SignInUsecase {
       return { access_token, refresh_token };
     }
 
-    throw new Error('Credentials Invalid');
+    throw new Error('Invalid credentials');
   }
 }
