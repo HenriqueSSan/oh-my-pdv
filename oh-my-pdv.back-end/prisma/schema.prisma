@@ -4,5 +4,69 @@ generator client {
 
 datasource db {
     provider = "sqlite"
-    url = env("DATABASE_URL")
+    url      = env("DATABASE_URL")
+}
+
+model User {
+    id            String   @id @unique @default(uuid())
+    email         String
+    username      String
+    password_hash String
+    created_at    DateTime @default(now())
+    sales         Sale[]
+
+    @@map("user")
+}
+
+model Product {
+    id          String      @id @unique @default(ulid())
+    name        String
+    description String
+    base_price  Decimal
+    created_at  DateTime    @default(now())
+    saleItens   SaleItens[]
+
+    @@map("product")
+}
+
+model Sale {
+    id      Int    @id @unique @default(autoincrement())
+    user_id String
+
+    total          Decimal
+    status         String
+    created_at     DateTime          @default(now())
+    payment_method SalePaymentMethod
+
+    user      User        @relation(fields: [user_id], references: [id])
+    saleItens SaleItens[]
+
+    @@map("sale")
+}
+
+enum SaleStatus {
+    COMPLETED
+    CANCELED
+}
+
+enum SalePaymentMethod {
+    CREDIT
+    BOLETO
+    DEBIT
+    PIX
+}
+
+model SaleItens {
+    id         Int    @id @default(autoincrement())
+    sale_id    Int
+    product_id String
+
+    quantity   Int
+    unit_price Decimal
+    subtotal   Decimal
+
+    sale    Sale    @relation(fields: [sale_id], references: [id])
+    product Product @relation(fields: [product_id], references: [id])
+
+    @@map("sale_item")
 }
