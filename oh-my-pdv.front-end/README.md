@@ -1,75 +1,57 @@
-# React + TypeScript + Vite
+# Oh My PDV
+"Oh my PDV" é um simples sistema de gestão de ponto de vendas minimalista.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Como rodar o front-end:
 
-Currently, two official plugins are available:
+Para rodar o front-end é necessário ter `node` instalado em sua máquina, para isso siga os passoas abaixo:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
-
-Note: This will impact Vite dev & build performances.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+##### 1. Primeiro passo:
+**Instale primeiro as depedências da aplicação do front-end.**
+```bash
+npm i
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+##### 2. Segundo passo:
+**Após o primeiro passo abra seu terminal e escreva o comando**
+```bash
+npm run build
 ```
+
+##### 3. Terceiro passo:
+**Após o primeiro passo abra seu terminal e escreva o comando**
+```bash
+npm run start
+```
+
+### Como rodar a camada de testes do front-end:
+
+Para rodar os teste do front-end é necessário ter `node` instala em sua máquina:
+
+```bash
+npm run test
+```
+
+Observações para components dentro da pasta `UI`: **[Segmento] | [Component] [Descrição]**
+
+Observações para `fluxos` de `formulários` ou `interações` em geral: **[Segmento] | [Fluxo] [Descrição]**
+
+### Como implementar o Grafana Faro
+
+Acrescente essas variáveis de ambiente no `.env` que você precisa criar:
+```bash
+GRAFANA_API_KEY=sua_api_key
+GRAFANA_APP_ID=seu_identificador_do_aplicativo
+GRAFANA_STACK_ID=seu_stack_id
+GRAFANA_APP_NAME=seu_nome_do_aplicativo
+GRAFANA_API=api_do_grafana
+```
+
+Caso esteja desejando fazer alterações nas configurações do Grafana Faro, vá para `./src/logger.tsx`.
+
+
+### Tecnologias utilizadas atualmente:
+
+- React.Js, TypeScript, React-Router, Vitest,Vite,Eslint,Prettier,TailwindCSS, React-Testing-Library, Axios, React-Query, Socket.Io.
+
+### Informações adicionais:
+- WAI-ARIA, W3C Web Standards 
