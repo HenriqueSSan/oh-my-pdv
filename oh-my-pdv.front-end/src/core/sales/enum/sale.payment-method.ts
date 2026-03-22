@@ -1,0 +1,22 @@
+export type SALE_PAYMENT_METHOD = (typeof SALE_PAYMENT_METHOD)[keyof typeof SALE_PAYMENT_METHOD]
+
+export const SALE_PAYMENT_METHOD = {
+  PIX: "PIX",
+  DEBIT: "DEBIT",
+  BOLETO: "BOLETO",
+  CREDIT: "CREDIT",
+  MONEY: "MONEY",
+} as const
+
+const SALE_PAYMENT_METHOD_FORMATTED: Record<SALE_PAYMENT_METHOD, string> = {
+  PIX: "Pix",
+  DEBIT: "Débito",
+  BOLETO: "Boleto",
+  CREDIT: "Crédito",
+  MONEY: "Dinheiro",
+}
+
+export const SALE_PAYMENT_METHOD_ENUM_MAPPER = {
+  STATUS_FORMATTED: SALE_PAYMENT_METHOD_FORMATTED,
+  STATUS: SALE_PAYMENT_METHOD,
+}
